@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shanti Tamang</title>
+  <meta name="description" content="Shanti Tamang — CS student at UNT and aspiring data analyst in Dallas–Fort Worth.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="topnav">
+    <a href="#top" class="brand">Shanti Tamang</a>
+    <a href="#about">About me</a>
+    <a href="#building">Building</a>
+    <a href="#years">Playlist years</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- ================= HERO ================= -->
+  <header id="top" class="hero">
+    <div class="tag">Kathmandu → Denton → Irving · data in progress</div>
+    <h1>Shanti<br>Tamang</h1>
+    <p class="lede">CS student at UNT, aspiring data analyst in Dallas–Fort Worth.
+      I turn messy data into stories — about fashion, music, places, and whatever else I'm curious about this week.</p>
+    <div class="hero-buttons">
+      <a href="#about" class="btn">01 About me</a>
+      <a href="#building" class="btn">02 Building</a>
+      <a href="#years" class="btn">03 Playlist years</a>
+      <a href="#contact" class="btn btn-solid">04 Say hi</a>
+    </div>
+  </header>
+
+  <!-- ================= ABOUT (scroll story) ================= -->
+  <section id="about" class="story">
+    <div class="story-map">
+      <canvas id="mapCanvas" aria-hidden="true"></canvas>
+      <ol class="stop-index" id="stopIndex">
+        <li data-i="0"><span>01</span> Kathmandu</li>
+        <li data-i="1"><span>02</span> Denton</li>
+        <li data-i="2"><span>03</span> Irving</li>
+        <li data-i="3"><span>04</span> Next</li>
+      </ol>
+      <div class="map-caption" id="mapCaption">
+        <b id="mapCaptionNum">ST 01</b><span id="mapCaptionText">Kathmandu, Nepal · where it started</span>
+      </div>
+    </div>
+
+    <div class="story-text">
+      <div class="part-head">
+        <p class="mono">Part one</p>
+        <h2>About me</h2>
+        <p>Kathmandu, Denton and Irving. How I got here.</p>
+      </div>
+
+      <article class="stop" data-i="0" data-caption="Kathmandu, Nepal · where it started">
+        <p class="mono">Stop 01 · 2004</p>
+        <h3>Kathmandu, Nepal</h3>
+        <span class="pill">Where it started</span>
+        <p><!-- EDIT ME -->Born in Kathmandu. Write a few sentences here about growing up — a memory,
+          a place, the first thing that got you curious about computers or data.</p>
+      </article>
+
+      <article class="stop" data-i="1" data-caption="Denton, Texas · University of North Texas">
+        <p class="mono">Stop 02 · UNT</p>
+        <h3>Denton, Texas</h3>
+        <span class="pill">Computer Science</span>
+        <p><!-- EDIT ME -->Studying Computer Science at the University of North Texas — databases,
+          data mining, networks, programming languages and applied AI. Add the class or project
+          that changed how you think.</p>
+      </article>
+
+      <article class="stop" data-i="2" data-caption="Irving / Las Colinas · home base">
+        <p class="mono">Stop 03 · Now</p>
+        <h3>Irving, Texas</h3>
+        <span class="pill">Home base</span>
+        <p><!-- EDIT ME -->Living in Irving / Las Colinas, exploring Dallas's hidden gems on
+          TikTok, writing about fashion and data, and making explainer videos on YouTube.</p>
+      </article>
+
+      <article class="stop" data-i="3" data-caption="DFW · data analyst, 2027">
+        <p class="mono">Stop 04 · 2027</p>
+        <h3>What's next</h3>
+        <span class="pill">Data analyst</span>
+        <p><!-- EDIT ME -->Graduating in spring 2027 and looking for data analyst roles in DFW.
+          SQL, Python, pandas, machine learning — certified through DeepLearning.AI / Stanford.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= BUILDING ================= -->
+  <section id="building" class="building">
+    <div class="section-head">
+      <p class="mono">Part two</p>
+      <h2>Building</h2>
+      <p>Things I've made, trained, broken and fixed.</p>
+    </div>
+    <div class="cards" id="projectCards"><!-- filled by js/main.js --></div>
+  </section>
+
+  <!-- ================= PLAYLIST YEARS ================= -->
+  <section id="years" class="years">
+    <div class="section-head light">
+      <p class="mono">Part three</p>
+      <h2>Playlist years</h2>
+      <p>My life in listening data — minutes per month, grouped into eras.</p>
+      <p class="mono small" id="dataNote"></p>
+    </div>
+    <div class="eras" id="eras"><!-- filled by js/main.js --></div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact" class="contact">
+    <p class="mono">Part four</p>
+    <h2>Say hi</h2>
+    <p>Hiring for a data role in DFW, or just want to talk fashion, music or SQL?</p>
+    <div class="contact-links">
+      <a class="btn btn-solid" href="mailto:you@example.com">Email me</a> <!-- EDIT ME -->
+      <a class="btn" href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank" rel="noopener">LinkedIn</a> <!-- EDIT ME -->
+      <a class="btn" href="https://github.com/shantitamang21" target="_blank" rel="noopener">GitHub</a> <!-- EDIT ME -->
+    </div>
+    <footer class="mono small">© <span id="yr"></span> Shanti Tamang · hosted on Azure Static Web Apps</footer>
+  </section>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
