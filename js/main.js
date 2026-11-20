@@ -204,7 +204,7 @@ const SAMPLE_ERAS = [
 
 function renderEras(eras, isSample) {
   document.getElementById("dataNote").textContent =
-    isSample ? "Sample data — run tools/spotify_to_eras.py to load yours" : "From my Spotify streaming history";
+    isSample ? "Preview with sample numbers — my real Spotify history is on its way." : "From my Spotify streaming history";
 
   const max = Math.max(...eras.flatMap(e => e.months));
   const wrap = document.getElementById("eras");
