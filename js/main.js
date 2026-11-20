@@ -259,7 +259,7 @@ function initNav() {
       links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + e.target.id));
     });
   }, { rootMargin: "-50% 0px -50% 0px" });
-  ["about", "building", "years", "contact"].forEach(id => io.observe(document.getElementById(id)));
+  ["about", "building", "years", "guestbook", "contact"].forEach(id => io.observe(document.getElementById(id)));
 }
 
 document.getElementById("yr").textContent = new Date().getFullYear();
