@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -17,6 +18,7 @@
     <a href="#about">About me</a>
     <a href="#building">Building</a>
     <a href="#years">Playlist years</a>
+    <a href="#guestbook">Guestbook</a>
     <a href="#contact">Contact</a>
   </nav>
 
@@ -112,9 +114,40 @@
     <div class="eras" id="eras"><!-- filled by js/main.js --></div>
   </section>
 
+  <!-- ================= GUESTBOOK ================= -->
+  <section id="guestbook" class="guestbook">
+    <div class="section-head">
+      <p class="mono">Part four</p>
+      <h2>Drop a pin</h2>
+      <p>Where are you visiting from? Click the map, leave a note, and become a data point.</p>
+    </div>
+    <div class="gb-grid">
+      <div class="gb-mapwrap">
+        <div id="gbMap" aria-label="World map. Click to choose where you are visiting from."></div>
+        <form id="gbForm" class="gb-form" autocomplete="off">
+          <p class="mono small" id="gbWhere">Click anywhere on the map to drop your pin.</p>
+          <div class="gb-fields">
+            <input name="gbName" maxlength="30" placeholder="Your name (optional)">
+            <input name="gbNote" maxlength="80" placeholder="Say hi (optional, 80 characters)">
+            <button id="gbSubmit" class="btn btn-solid" type="submit" disabled>Drop my pin</button>
+          </div>
+          <p id="gbStatus" class="gb-status" role="status"></p>
+          <p class="mono small gb-privacy">Pins are rounded to about 10 km. Nothing else about you is saved.</p>
+        </form>
+      </div>
+      <aside class="gb-stats">
+        <div class="gb-stat"><span class="mono small">Pins so far</span><b id="gbTotal">—</b></div>
+        <div class="gb-stat"><span class="mono small">Average distance</span><b id="gbAvg">—</b></div>
+        <div class="gb-stat gb-wide"><span class="mono small">Farthest from Irving</span><b id="gbFar">—</b><small id="gbFarWho"></small></div>
+        <div class="gb-stat gb-wide"><span class="mono small">Pins per month</span><div class="gb-chart" id="gbChart"></div></div>
+        <div class="gb-stat gb-wide"><span class="mono small">Latest notes</span><ul id="gbLatest" class="gb-latest"></ul></div>
+      </aside>
+    </div>
+  </section>
+
   <!-- ================= CONTACT ================= -->
   <section id="contact" class="contact">
-    <p class="mono">Part four</p>
+    <p class="mono">Part five</p>
     <h2>Say hi</h2>
     <p>Hiring for a data role in DFW, or just want to talk fashion, music or SQL?</p>
     <div class="contact-links">
@@ -126,5 +159,7 @@
   </section>
 
   <script src="js/main.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="js/guestbook.js"></script>
 </body>
 </html>
