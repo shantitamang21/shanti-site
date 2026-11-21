@@ -101,24 +101,25 @@ function sizeCanvas() {
 
 function drawMap(t = 0) {
   const W = canvas.clientWidth, H = canvas.clientHeight;
-  ctx.fillStyle = "#d6453d";
+  ctx.fillStyle = "#fde6f2";
   ctx.fillRect(0, 0, W, H);
 
   // pixel field
   for (const c of cells) {
     const tw = reduceMotion ? 0 : Math.sin(t / 900 + c.p) * 0.5 + 0.5;
     if (c.v > 0.93) {
-      ctx.fillStyle = `rgba(242,165,65,${0.55 + tw * 0.45})`;    // marigold sparkles
+      ctx.fillStyle = `rgba(255,196,40,${0.35 + tw * 0.6})`;     // butter-yellow sparkles
       ctx.fillRect(c.x + 2, c.y + 2, CELL - 4, CELL - 4);
     } else if (c.v > 0.55) {
-      ctx.fillStyle = `rgba(20,26,46,${0.12 + c.v * 0.18})`;       // texture
+      ctx.fillStyle = `rgba(196,176,255,${0.12 + (c.v - 0.55) * 0.35})`; // soft lilac pixels
       ctx.fillRect(c.x + 1, c.y + 1, CELL - 2, CELL - 2);
     }
   }
 
   // route up to the active stop
   ctx.setLineDash([3, 6]);
-  ctx.strokeStyle = "#f6efe3";
+  ctx.strokeStyle = "#ff5fa2";
+  ctx.lineWidth = 3;
   ctx.lineWidth = 2;
   ctx.beginPath();
   STOPS.slice(0, active + 1).forEach((s, i) => {
@@ -127,24 +128,27 @@ function drawMap(t = 0) {
   });
   ctx.stroke();
   ctx.setLineDash([]);
+  ctx.shadowBlur = 0;
 
   // markers + labels for visited stops
-  ctx.font = "600 15px 'JetBrains Mono', monospace";
+  ctx.font = "600 15px 'Pixelify Sans', monospace";
   STOPS.slice(0, active + 1).forEach((s, i) => {
     const px = s.x * W, py = s.y * H;
     const isNow = i === active;
-    ctx.fillStyle = "#141a2e";
+    ctx.fillStyle = "#3d2b4f";
     ctx.fillRect(px - 9, py - 9, 18, 18);
-    ctx.fillStyle = isNow ? "#f2a541" : "#f6efe3";
+    ctx.fillStyle = isNow ? "#ff5fa2" : "#9fd6ff";
     ctx.fillRect(px - 6, py - 6, 12, 12);
 
     const label = s.name;
     const tw = ctx.measureText(label).width;
     const boxW = tw + 18;
     const lx = px + 16 + boxW > W ? px - 16 - boxW : px + 16, ly = py - 30;
-    ctx.fillStyle = isNow ? "#f2a541" : "#141a2e";
+    ctx.fillStyle = isNow ? "#ff5fa2" : "#ffffff";
     ctx.fillRect(lx, ly, tw + 18, 26);
-    ctx.fillStyle = isNow ? "#141a2e" : "#f6efe3";
+    ctx.strokeStyle = "#3d2b4f"; ctx.lineWidth = 2;
+    ctx.strokeRect(lx + 1, ly + 1, tw + 16, 24);
+    ctx.fillStyle = isNow ? "#ffffff" : "#3d2b4f";
     ctx.fillText(label, lx + 9, ly + 18);
   });
 }
@@ -259,10 +263,30 @@ function initNav() {
       links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + e.target.id));
     });
   }, { rootMargin: "-50% 0px -50% 0px" });
-  ["about", "building", "years", "guestbook", "contact"].forEach(id => io.observe(document.getElementById(id)));
+  ["about", "building", "years", "gacha", "guestbook", "contact"].forEach(id => io.observe(document.getElementById(id)));
+}
+
+/* ---------- Typing + glitch intro ---------- */
+function initHero() {
+  const h = document.getElementById("heroName");
+  if (!h) return;
+  const text = h.dataset.text || h.textContent;
+  const cursor = '<span class="cursor" aria-hidden="true"></span>';
+  if (reduceMotion) { h.innerHTML = text + cursor; return; }
+  h.setAttribute("aria-label", text);
+  h.innerHTML = cursor;
+  let i = 0;
+  const tick = () => {
+    i++;
+    h.innerHTML = text.slice(0, i) + cursor;
+    if (i < text.length) setTimeout(tick, 55 + Math.random() * 70);
+    else h.classList.add("go");
+  };
+  setTimeout(tick, 400);
 }
 
 document.getElementById("yr").textContent = new Date().getFullYear();
+initHero();
 renderProjects();
 initStory();
 initEras();
