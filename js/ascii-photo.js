@@ -8,6 +8,8 @@
      data-cell       character size in px (default 9; smaller = more detail)
      data-threshold  0-1, how much of the image gets characters (default 0.55)
      data-color      character color (default #ffb3dc, soft pink)
+     data-dim        how dark the photo underneath is, 0-1 (default 0.72; lower = ASCII pops more)
+     data-edge       how easily outlines get traced (default 1.1; lower = more outline characters)
    ========================================================= */
 (function () {
   const RAMP = " .:-=+#";            // dark -> bright
@@ -17,6 +19,8 @@
     const cell = +fig.dataset.cell || 9;
     const threshold = fig.dataset.threshold ? +fig.dataset.threshold : 0.55;
     const color = fig.dataset.color || "#ffb3dc";
+    const dim = fig.dataset.dim ? +fig.dataset.dim : 0.72;
+    const edge = fig.dataset.edge ? +fig.dataset.edge : 1.1;
 
     const W = fig.clientWidth || 600;
     const H = Math.round(W * img.naturalHeight / img.naturalWidth);
@@ -29,7 +33,7 @@
     ctx.scale(dpr, dpr);
 
     // 1. Soft, slightly dark photo underneath
-    ctx.filter = "blur(2px) brightness(.72) saturate(.9)";
+    ctx.filter = `blur(2px) brightness(${dim}) saturate(.9)`;
     ctx.drawImage(img, 0, 0, W, H);
     ctx.filter = "none";
 
@@ -64,7 +68,7 @@
         const gy = L(x - 1, y + 1) + 2 * L(x, y + 1) + L(x + 1, y + 1) - L(x - 1, y - 1) - 2 * L(x, y - 1) - L(x + 1, y - 1);
         const g = Math.hypot(gx, gy);
         let ch = null;
-        if (g > 1.1) {
+        if (g > edge) {
           const a = Math.atan2(gy, gx) * 180 / Math.PI;
           const t = ((a % 180) + 180) % 180;
           ch = t < 22.5 || t >= 157.5 ? EDGE.v : t < 67.5 ? EDGE.d2 : t < 112.5 ? EDGE.h : EDGE.d1;
