@@ -53,6 +53,9 @@
       </div>
     </div>
     <div class="sticker" aria-hidden="true">Kathmandu → Irving ✈</div>
+    <span class="critter cr-hero-coffee" data-c="coffee"></span>
+    <span class="critter cr-hero-plant" data-c="monstera"></span>
+    <span class="critter cr-hero-sun" data-c="sun"></span>
   </header>
 
   <!-- ================= ABOUT (scroll story) ================= -->
@@ -118,7 +121,7 @@
   <section id="building" class="building">
     <div class="section-head">
       <p class="label">part two ✦</p>
-      <h2>Building</h2>
+      <h2>Building <span class="critter cr-mini" data-c="books"></span></h2>
       <p>Things I've made, trained, broken and fixed.</p>
     </div>
     <div class="cards" id="projectCards"><!-- filled by js/main.js --></div>
@@ -128,7 +131,7 @@
   <section id="years" class="years">
     <div class="section-head">
       <p class="label">part three ♫</p>
-      <h2>Playlist years</h2>
+      <h2>Playlist years <span class="critter cr-mini" data-c="coffee"></span></h2>
       <p>My life in listening data — minutes per month, grouped into eras.</p>
       <p class="label small" id="dataNote"></p>
     </div>
@@ -142,7 +145,7 @@
   <section id="gacha" class="gacha-section">
     <div class="section-head">
       <p class="label">part four ★</p>
-      <h2>Fun fact gacha</h2>
+      <h2>Fun fact gacha <span class="critter cr-mini" data-c="cactus"></span></h2>
       <p>Turn the dial, get a capsule, learn something about me.</p>
     </div>
     <div class="gacha-wrap">
@@ -175,7 +178,7 @@
   <section id="guestbook" class="guestbook">
     <div class="section-head">
       <p class="label">part five ✈</p>
-      <h2>Drop a pin</h2>
+      <h2>Drop a pin <span class="critter cr-mini" data-c="plant"></span></h2>
       <p>Where are you visiting from? Click the map, leave a note, and become a data point.</p>
     </div>
     <div class="gb-grid">
@@ -203,6 +206,18 @@
     </div>
   </section>
 
+  <!-- ================= PLANT SHELF ================= -->
+  <div class="shelf-wrap" aria-label="A shelf of little friends. Click them!">
+    <p class="shelf-hint">psst… click my plant friends to water them 💧</p>
+    <div class="shelf">
+      <span class="critter" data-c="cactus"></span>
+      <span class="critter" data-c="books"></span>
+      <span class="critter" data-c="plant"></span>
+      <span class="critter" data-c="coffee"></span>
+      <span class="critter" data-c="monstera"></span>
+    </div>
+  </div>
+
   <!-- ================= CONTACT ================= -->
   <section id="contact" class="contact">
     <span class="deco star s3" aria-hidden="true"></span>
@@ -219,6 +234,8 @@
         </div>
       </div>
     </div>
+    <span class="critter cr-contact-l" data-c="plant"></span>
+    <span class="critter cr-contact-r" data-c="coffee"></span>
     <footer class="label small">© <span id="yr"></span> Shanti Tamang ✦ made with ♡ and data ✦ hosted on Azure</footer>
   </section>
 
@@ -227,5 +244,6 @@
   <script src="js/guestbook.js"></script>
   <script src="js/ascii-photo.js"></script>
   <script src="js/cute.js"></script>
+  <script src="js/critters.js"></script>
 </body>
 </html>
