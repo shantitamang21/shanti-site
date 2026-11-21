@@ -16,12 +16,12 @@
 
   // ---------- Map ----------
   const map = L.map(mapEl, { worldCopyJump: true, scrollWheelZoom: false, minZoom: 2 }).setView([25, 10], 2);
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+  L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
     subdomains: "abcd", maxZoom: 10
   }).addTo(map);
 
-  const icon = (cls) => L.divIcon({ className: "gb-pin " + cls, iconSize: [16, 16], iconAnchor: [8, 8] });
+  const icon = (cls) => L.divIcon({ className: "gb-pin " + cls, html: cls === "gb-home" ? "★" : "♥", iconSize: [24, 24], iconAnchor: [12, 12] });
   const layer = L.layerGroup().addTo(map);
   L.marker([HOME.lat, HOME.lng], { icon: icon("gb-home"), title: "Shanti, Irving TX" })
     .addTo(map).bindTooltip("Me · Irving, TX", { direction: "top", offset: [0, -8] });
